@@ -2,6 +2,8 @@
 
 ## Required Homework/Tasks
 
+## Install AWS CLI and User
+
 ### Install and Verify AWS CLI 
 
 I installed and verified AWS CLI on gitpod and on my local machine
@@ -113,6 +115,16 @@ I also persisted the account id on gitpod
 export AWS_ACCOUNT_ID=$(aws sts get-caller-identity --query Account --output text)
 gp env AWS_ACCOUNT_ID=$(aws sts get-caller-identity --query Account --output text)
 ```
+### MFA for root account
+
+I set up MFA for my root account
+
+![Image of mfa](assets/mfa.png)
+
+
+## Create an AWS Budget
+
+[aws budgets create-budget](https://docs.aws.amazon.com/cli/latest/reference/budgets/create-budget.html)
 
 ### Create a Budget using AWS Console
 
@@ -140,11 +152,63 @@ aws budgets create-budget \
 
 ![Image of The Budget Alarm 2](assets/budget-alarm-cli.png)
 
-### MFA for root account
+## Enable Billing 
 
-I set up MFA for my root account
+We need to turn on Billing Alerts to recieve alerts...
 
-![Image of mfa](assets/mfa.png)
+
+- In your Root Account go to the [Billing Page](https://console.aws.amazon.com/billing/)
+- Under `Billing Preferences` Choose `Receive Billing Alerts`
+- Save Preferences
+
+
+## Creating a Billing Alarm
+
+### Create SNS Topic
+
+- An SNS topic should be created before an alarm.
+- The SNS topic delivers an alert for billings
+- [aws sns create-topic](https://docs.aws.amazon.com/cli/latest/reference/sns/create-topic.html)
+
+I created a topic with this
+```bash
+aws sns create-topic --name billing-alarm
+```
+which will return a TopicARN
+
+We'll create a subscription supply the TopicARN and our Email
+
+```bash
+aws sns subscribe \
+    --topic-arn $AWS_BILLING_ALARM_TOPIC \
+    --protocol email \
+    --notification-endpoint ayomidedev8@gmail.com
+```
+
+I received this output
+
+```json
+{
+    "TopicArn": "arn:aws:sns:us-east-1:590184073830:billing-alarm"
+}
+```
+
+I confirmed the subscription in my email
+
+![Image of billing topic with one confirmed subscription](assets/billing-topic.png)
+
+#### Create Alarm
+
+- [aws cloudwatch put-metric-alarm](https://docs.aws.amazon.com/cli/latest/reference/cloudwatch/put-metric-alarm.html)
+- [Create an Alarm via AWS CLI](https://aws.amazon.com/premiumsupport/knowledge-center/cloudwatch-estimatedcharges-alarm/)
+- We need to update the configuration json script with the TopicARN we generated earlier
+- We are just a json file because --metrics is is required for expressions and so its easier to us a JSON file.
+
+```bash
+aws cloudwatch put-metric-alarm --cli-input-json file://aws/json/alarm-config.json
+```
+
+## Logical Architectural Design
 
 ### Recreate Logical Architectural Deisgn
 
