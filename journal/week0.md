@@ -208,6 +208,8 @@ I confirmed the subscription in my email
 aws cloudwatch put-metric-alarm --cli-input-json file://aws/json/alarm-config.json
 ```
 
+![Image of billing alarm](assets/billing-alarm.png)
+
 ## Logical Architectural Design
 
 ### Recreate Logical Architectural Deisgn
