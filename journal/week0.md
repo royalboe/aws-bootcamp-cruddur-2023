@@ -189,7 +189,7 @@ I received this output
 
 ```json
 {
-    "TopicArn": "arn:aws:sns:us-east-1:590184073830:billing-alarm"
+    "TopicArn": "arn:aws:sns:us-east-1:************:billing-alarm"
 }
 ```
 
