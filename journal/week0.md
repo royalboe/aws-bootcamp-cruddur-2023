@@ -135,7 +135,7 @@ I created another Budget budget using the cli and I had three alerts on it
 aws budgets create-budget \
     --account-id $AWS_ACCOUNT_ID \
     --budget file://aws/json/budget.json \
-    --notifications-with-subscribers file://aws/json/notifications-with-subscribers.json
+    --notifications-with-subscribers file://aws/json/budget-notifications-with-subscribers.json
 ```
 
 ![Image of The Budget Alarm 2](assets/budget-alarm-cli.png)
