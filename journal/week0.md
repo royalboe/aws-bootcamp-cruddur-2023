@@ -210,6 +210,27 @@ aws cloudwatch put-metric-alarm --cli-input-json file://aws/json/alarm-config.js
 
 ![Image of billing alarm](assets/billing-alarm.png)
 
+## AWS Organizations
+
+I created an organisation on aws with two major pools which are the active and passive pools
+
+![Organizations](assets/organisation.png)
+
+## Secruity
+
+### Cloudtrail
+
+I created a trail to track all api calls to on my account and organisation
+
+![Cloudtrail](assets/cloudtrail.png)
+
+![Cloudtrail bucket](assets/cloudtrail-bucket.png)
+
+I created three essential user groups as well, one for the admin, the other for engineers and the last one with readonly permissions
+
+![User Groups](assets/user-group.png)
+
+
 ## Logical Architectural Design
 
 ### Recreate Logical Architectural Deisgn
@@ -218,3 +239,8 @@ aws cloudwatch put-metric-alarm --cli-input-json file://aws/json/alarm-config.js
 
 [Lucid Charts Share Link](https://lucid.app/lucidchart/43ec5cae-507c-4dde-a664-910864df9671/edit?viewport_loc=-1747%2C-193%2C2882%2C1360%2C0_0&invitationId=inv_6f8ebbb3-39da-457f-893f-91f720c183ea
 )
+
+
+## CHALLENGES
+
+I attempted using the identity centre, although I was able to create an admin group and a user under the admin group, and I was also able to create a permission set, I am unable to attach the permission to the newly created group and user. This is something I will keep working on to understand.
