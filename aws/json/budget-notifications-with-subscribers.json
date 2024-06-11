@@ -1,0 +1,59 @@
+[
+  {
+      "Notification": {
+          "ComparisonOperator": "GREATER_THAN",
+          "NotificationType": "FORECASTED",
+          "Threshold": 80,
+          "ThresholdType": "PERCENTAGE",
+          "NotificationState": "OK"
+      },
+      "Subscribers": [
+          {
+              "Address": "auomidejohnson@gmail.com",
+              "SubscriptionType": "EMAIL"
+          },
+          {
+            "Address": "ayomidedev8n@gmail.com",
+            "SubscriptionType": "EMAIL"
+          }
+      ]
+  },
+  {
+    "Notification": {
+        "ComparisonOperator": "GREATER_THAN",
+        "NotificationType": "ACTUAL",
+        "Threshold": 0.01,
+        "ThresholdType": "ABSOLUTE_VALUE",
+        "NotificationState": "ALARM"
+    },
+    "Subscribers": [
+        {
+            "Address": "auomidejohnson@gmail.com",
+            "SubscriptionType": "EMAIL"
+        },
+        {
+          "Address": "ayomidedev8n@gmail.com",
+          "SubscriptionType": "EMAIL"
+        }
+    ]
+  },
+  {
+    "Notification": {
+        "ComparisonOperator": "GREATER_THAN",
+        "NotificationType": "ACTUAL",
+        "Threshold": 50,
+        "ThresholdType": "PERCENTAGE",
+        "NotificationState": "ALARM"
+    },
+    "Subscribers": [
+        {
+            "Address": "auomidejohnson@gmail.com",
+            "SubscriptionType": "EMAIL"
+        },
+        {
+          "Address": "ayomidedev8n@gmail.com",
+          "SubscriptionType": "EMAIL"
+        }
+    ]
+  }
+]

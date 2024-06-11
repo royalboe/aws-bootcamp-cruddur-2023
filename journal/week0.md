@@ -30,18 +30,41 @@ C:\Users\Windows>aws --version
 operable program or batch file.
 ```
 
-I had to restart the terminal to see the version of aws after running `asw --version`
+I had to restart the terminal to see the version of aws after running `aws --version`
 
 ![Proof of Working AWS CLI](assets/proof-of-aws-cli.png)
+![Proof of Working AWS CLI](assets/aws-cli-user.png)
 
-### Create a Budget
+### Create a Budget using AWS Console
 
-I created my own Budget for zero net spend budget and I had three alerts on it
+I created my own Budget for zero net spend budget using the console and I had three alerts on it
 - For over 0.01 dollars for actual cost
 - For over 50% of 1 dollar for actual cost
 - For over 80% of 1 dollar for forecasted cost
 
-![Image of The Budget Alarm I Created](assets/budget-alarm.png) 
+![Image of The Budget Alarm I Created](assets/budget-alarm.png)
+
+### Create a Budget using AWS CLI
+
+I created another Budget budget using the cli and I had three alerts on it
+- For over 1 dollars for actual cost
+- For over 50% of 5 dollar for actual cost
+- For over 80% of 5 dollar for forecasted cost
+
+```bash
+aws budgets create-budget \
+    --account-id 111122223333 \
+    --budget file://budget.json \
+    --notifications-with-subscribers file://notifications-with-subscribers.json
+```
+
+![Image of The Budget Alarm I Created](assets/budget-alarm-cli.png)
+
+### MFA for root account
+
+I set up MFA for my root account
+
+![Image of mfa](assets/mfa.png)
 
 ### Recreate Logical Architectural Deisgn
 
