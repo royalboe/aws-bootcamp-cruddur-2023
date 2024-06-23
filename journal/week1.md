@@ -2,8 +2,7 @@
 
 ## Description
 
-This week is for learning the basics of docker and containerizing a flask backend application and a react frontend application
-
+This week is for learning the basics of docker and containerizing a flask backend application and a react frontend application.
 
 ### Create a table
 
@@ -44,7 +43,7 @@ aws dynamodb scan --table-name Music --query "Items" --endpoint-url http://local
 ```
 
 
-# Install postgresql client
+### Install postgresql client
 
 ```bash
 curl -fsSL https://www.postgresql.org/media/keys/ACCC4CF8.asc|sudo gpg --dearmor -o /etc/apt/trusted.gpg.d/postgresql.gpg
@@ -52,3 +51,7 @@ echo "deb http://apt.postgresql.org/pub/repos/apt/ `lsb_release -cs`-pgdg main" 
 sudo apt update
 sudo apt install -y postgresql-client-13 libpq-dev
 ```
+
+## CHALLENGE
+
+I initially found it difficult to connect to my database.
